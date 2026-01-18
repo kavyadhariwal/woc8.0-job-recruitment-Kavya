@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account | CareerHome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffffff; /* White background */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card {
+            border-radius: 1rem;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .card-header {
+            background: #2575fc;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 1.5rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-control, .form-check-input {
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #2575fc;
+            border: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #1a5dc9;
+        }
+
+        .form-check {
+            margin-right: 1rem;
+        }
+
+        .already-account {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+
+            <div class="card shadow-lg">
+                
+                <div class="card-header">
+                    Create Your Account
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-center text-muted mb-4">
+                        Join CareerHome to find your dream job
+                    </p>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <!-- User Type -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">You are</label>
+                            <div class="d-flex">
+                                {% for radio in form.user_type %}
+                                    <div class="form-check">
+                                        {{ radio.tag }}
+                                        <label class="form-check-label">
+                                            {{ radio.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            {{ form.username }}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            {{ form.email }}
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            {{ form.phone }}
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-3">
+                            <label class="form-label">Location</label>
+                            {{ form.location }}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            {{ form.password1 }}
+                            <small class="text-muted">
+                                Must be 8+ characters, not common or similar to username.
+                            </small>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            {{ form.password2 }}
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-3">
+                                Sign Up
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <div class="text-center already-account">
+                        Already have an account? 
+                        <a href="{% url 'login' %}" class="fw-semibold text-decoration-none text-primary">Login</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
