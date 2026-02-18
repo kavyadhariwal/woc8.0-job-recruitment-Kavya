@@ -82,9 +82,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'Pinky@738322927',
-        'HOST': 'db.ebfkukoefuqrlpsrquko.supabase.co',
-        'PORT': '5432',
+       
+    
         'OPTIONS': {
             'sslmode': 'require',
         },
@@ -131,16 +130,7 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
-LOGIN_REDIRECT_URL = 'dashboard'
-LOGOUT_REDIRECT_URL = 'home'
-LOGIN_URL = 'login'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'kavyadhariwal164@gmail.com'
-EMAIL_HOST_PASSWORD = 'APP_PASSWORD'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
